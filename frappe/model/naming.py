@@ -76,7 +76,7 @@ def set_name_by_naming_series(doc):
 		if doc.is_return:
 			doc.naming_series = doc.naming_series + "RET-"
 
-	key = company.abbr + "-" + doc.naming_series + ".YY.-.#####"
+	key = company.abbr+"-.FY.-"+doc.naming_series+".#####"
 
 	doc.name = make_autoname(key, '', doc)
 	# doc.name = make_autoname(doc.naming_series+'.#####', '', doc)
