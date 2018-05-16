@@ -66,17 +66,13 @@ def set_name_by_naming_series(doc):
 	if not doc.naming_series:
 		frappe.throw(frappe._("Naming Series mandatory"))
 
-	##### Start Modification on 16-01-2018
+	##### Start Modification on 16-01-2018 Remodified on 16-05-2018
 	if not doc.company:
 		frappe.throw(frappe._("Company mandatory"))
 	else:
 		company = frappe.get_doc("Company",doc.company)
 
-	if doc.doctype in ["Sales Invoice","Delivery Note"]:
-		if doc.is_return:
-			doc.naming_series = doc.naming_series + "RET-"
-
-	key = company.abbr+"-.FY.-"+doc.naming_series+".#####"
+	key = company.abbr+"-.FY.-"+doc.naming_series
 
 	doc.name = make_autoname(key, '', doc)
 	# doc.name = make_autoname(doc.naming_series+'.#####', '', doc)
